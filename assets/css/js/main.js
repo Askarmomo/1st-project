@@ -48,19 +48,17 @@ validateForm.onSuccess(() => {
     const newcorierdata = []
     newcorierdata.push(formValueObj)
 
-    // [{ "saiufdjhasfdpojvpaosdijfpadshjfvuaiohvnauer"}"oquewhwhef8"]
-
     const exsistingCorierData = localStorage.getItem("corierData")
-
     const exisitincorierarray = JSON.parse(exsistingCorierData)
 
     if (exisitincorierarray) {
 
         exisitincorierarray.push(formValueObj)
         localStorage.setItem("corierData", JSON.stringify(exisitincorierarray))
-    } else {
-        newcorierdata.push(formValueObj)
 
+    } else {
+        
+        newcorierdata.push(formValueObj)
         localStorage.setItem("corierData", JSON.stringify(newcorierdata))
 
     }
