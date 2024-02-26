@@ -38,19 +38,32 @@ validateForm.addField("#date-input", [
 );
 
 validateForm.onSuccess(() => {
-    // getting form ellement
+    // getting all form ellements from (new FormData)
     const formData = new FormData(formEL);
-    // convering formData in to  objectvalue
 
+    // convering formData in to  objectvalue
     const formValueObj = Object.fromEntries(formData.entries())
 
-    const object = []
+    const newcorierdata = []
 
-    object.push(formValueObj)
+    newcorierdata.push(formValueObj)
 
-    localStorage.setItem("corierData", JSON.stringify(object))
-    const resultobj = localStorage.getItem("corierData")
-    console.log(resultobj.replace());
+    const exsistingCorierData = localStorage.getItem("corierData")
 
+    const exisitincorierarray = JSON.parse(exsistingCorierData)
+
+    if (exisitincorierarray) {
+
+        exisitincorierarray.push(formValueObj)
+        localStorage.setItem("corierData", JSON.stringify(exisitincorierarray))
+    } else {
+
+    }
+    newcorierdata.push(formValueObj)
+
+    localStorage.setItem("corierData", JSON.stringify(newcorierdata))
+
+    alert("Sucssese")
+    formEL.reset()
 })
 
