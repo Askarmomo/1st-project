@@ -3,6 +3,8 @@ import JustValidate from "just-validate";
 
 const formEL = document.getElementById("form")
 
+const localStorageKey = "corierData"
+
 const validateForm = new JustValidate(formEL, {
     validateBeforeSubmitting: true,
 });
@@ -48,18 +50,19 @@ validateForm.onSuccess(() => {
     const newcorierdata = []
     newcorierdata.push(formValueObj)
 
+
     const exsistingCorierData = localStorage.getItem("corierData")
     const exisitincorierarray = JSON.parse(exsistingCorierData)
 
     if (exisitincorierarray) {
 
         exisitincorierarray.push(formValueObj)
-        localStorage.setItem("corierData", JSON.stringify(exisitincorierarray))
+        localStorage.setItem(localStorageKey, JSON.stringify(exisitincorierarray))
 
     } else {
-        
+
         newcorierdata.push(formValueObj)
-        localStorage.setItem("corierData", JSON.stringify(newcorierdata))
+        localStorage.setItem(localStorageKey, JSON.stringify(newcorierdata))
 
     }
 
@@ -67,3 +70,27 @@ validateForm.onSuccess(() => {
     formEL.reset()
 })
 
+
+function getAllCorierData() {
+
+    const corierData = localStorage.getItem(localStorageKey)
+    const corierDataArray = JSON.parse(corierData)
+
+    const finalaresult = corierDataArray.map((corierData) => {
+        const newtr = `
+        <tr>
+           <td class="px-2 py-1 border">${corierData.name}</td>
+           <td class="px-2 py-1 border">${corierData.date}</td>
+           <td class="px-2 py-1 border">${corierData.mobile}</td>
+           <td class="px-2 py-1 border"><button class="px-2 py-1 bg-red-600 text-white text-sm rounded"
+           id="Delete-btn">Delete</button></td>
+        </tr>
+        `
+        return newtr
+    }).join(" ")
+    const tableEl = document.getElementById("table")
+
+    tableEl.innerHTML += finalaresult
+
+}
+getAllCorierData()

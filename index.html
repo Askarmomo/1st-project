@@ -16,32 +16,25 @@
       <div><input id="name-input" type="text" class="p-1.5 rounded bg-zinc-200 w-60" placeholder=" Name" name="name"
           required></div>
       <div><input id="number-input" type="phone Number" class="p-1.5 rounded bg-zinc-200 w-56" min="0" max="900000000"
-          placeholder="Phone Number" name="Phone Number" required value="0751336007"></div>
+          placeholder="Phone Number" name="mobile" required value="0751336007"></div>
     </div>
     <div><input id="date-input" type="datetime-local" class="p-1.5 rounded bg-zinc-200 w-full"
-        placeholder="Pick Up Date" name="pickup date" required>
+        placeholder="Pick Up Date" name="date" required>
     </div>
     <!-- <textarea name="pick Up area" cols="30" rows="4" class="p-1.5 rounded bg-zinc-200 w-full" placeholder="enter your pick Up address"> </textarea> -->
     <button class="bg-blue-900 rounded p-1.5 w-full text-zinc-200 font-semibold hover:bg-blue-950"
       id="Submit-btn">Submit</button>
   </form>
 
-  <div class="bg-white p-4 rounded max-w-lg mx-auto m-5 text-black space-y-4 hidden" id="hiddendiv">
+  <div class="bg-white p-4 rounded max-w-4xl mx-auto m-5 text-black space-y-4" id="hiddendiv">
     <div class="font-semibold text-xl">corier Request</div>
     <table class="table table-fixed border w-full text-center" id="table">
       <tr>
         <th class="px-2 py-1 border">Custemers</th>
         <th class="px-2 py-1 border">picUp Date</th>
-        <th class="px-2 py-1 border">phone number</th>
+        <th class="px-2 py-1 border">phoneNumber</th>
       </tr>
 
-      <tr id="user-data">
-        <td class="px-2 py-1 border" id="td-name">Mr. Askar</td>
-        <td class="px-2 py-1 border" id="t-date">19 February 2024</td>
-        <td class="px-2 py-1 border" id="Phone-number">+94751336007</td>
-        <td class="px-2 py-1 border"><button class="px-2 py-1 bg-red-600 text-white text-sm rounded"
-            id="Delete-btn">Delete</button></td>
-      </tr>
     </table>
   </div>
 
